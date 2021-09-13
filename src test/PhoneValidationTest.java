@@ -21,7 +21,17 @@ class PhoneValidationTest {
         assertEquals("+37065245248", phoneValidator.changeLocalNumber("865245248"));
     }
     @Test
-    void PhoneLocalNumberTest_
+    void PhoneNewRuleTest_InvalidPrefixOfCountry(){
+        assertFalse( phoneValidator.checkNewRule("+371", 11, "Estonia"));
+    }
+    @Test
+    void PhoneNewRuleTest_InvalidNumberLength(){
+        assertFalse( phoneValidator.checkNewRule("+371", 3, "Latvia"));
+    }
+    @Test
+    void PhoneNewRuleTest_ValidRule(){
+        assertTrue( phoneValidator.checkNewRule("+371", 11, "Latvia"));
+    }
 
 
     @AfterEach
