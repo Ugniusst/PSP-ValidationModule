@@ -16,10 +16,6 @@ class PasswordValidationTest {
         assertTrue(passwordValidator.checkLength("AuksinisKardas123", 8));
     }
     @Test
-    void passwordLengthTest_ValidLengthPassword() {
-        assertTrue(passwordValidator.checkLength("AuksinisKardas123", 8));
-    }
-    @Test
     void passwordLengthTest_TooShortPassword() {
         assertFalse(passwordValidator.checkLength("abc123", 8));
     }
