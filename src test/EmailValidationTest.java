@@ -29,7 +29,7 @@ class EmailValidationTest {
     }
     @Test
     void emailCharactersTest_ValidCharacters() {
-        assertTrue(emailValidator.checkCharacters("vardenis!.pavardenis?@gmail.com"));
+        assertTrue(emailValidator.checkCharacters("vardenis.pavardenis@gmail.com"));
     }
     @Test
     void emailDomainTest_InvalidDomain(){
