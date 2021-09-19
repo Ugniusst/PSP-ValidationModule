@@ -10,11 +10,11 @@ class PhoneValidationTest {
     }
     @Test
     void PhoneNumbersTest_InvalidChar(){
-        assertFalse(phoneValidator.checkNumbers("+370*56a741"));
+        assertFalse(phoneValidator.validatePhoneNumber("+370*56a741"));
     }
     @Test
     void PhoneNumbersTest_ValidChar(){
-        assertTrue(phoneValidator.checkNumbers("+370245741"));
+        assertTrue(phoneValidator.validatePhoneNumber("+370245741"));
     }
     @Test
     void PhoneLocalNumberTest_ChangeDone(){

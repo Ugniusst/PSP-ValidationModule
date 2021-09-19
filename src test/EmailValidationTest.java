@@ -13,35 +13,35 @@ class EmailValidationTest {
 
     @Test
     void emailEtaTest_NoEtaSign() {
-        assertFalse(emailValidator.checkEtaSign("vardenis.pavardenisgmail.com"));
+        assertFalse(emailValidator.validateEmail("vardenis.pavardenisgmail.com"));
     }
     @Test
     void emailEtaTest_MoreEtaSigns() {
-        assertFalse(emailValidator.checkEtaSign("vardenis.pav@ardenis@gmail.com"));
+        assertFalse(emailValidator.validateEmail("vardenis.pava@ardenis@gmil.com"));
     }
     @Test
     void emailEtaTest_ValidEtaSign() {
-        assertTrue(emailValidator.checkEtaSign("vardenis.pavardenis@gmail.com"));
+        assertTrue(emailValidator.validateEmail("vardenis.pavardenis@gmail.com"));
     }
     @Test
     void emailCharactersTest_InvalidCharacters() {
-        assertFalse(emailValidator.checkCharacters("vardenis!.pavardenis?@gmail.com"));
+        assertFalse(emailValidator.validateEmail("vardenis!.pavardenis?@gmail.com"));
     }
     @Test
     void emailCharactersTest_ValidCharacters() {
-        assertTrue(emailValidator.checkCharacters("vardenis.pavardenis@gmail.com"));
+        assertTrue(emailValidator.validateEmail("vardenis.pavardenis@gmail.com"));
     }
     @Test
     void emailDomainTest_InvalidDomain(){
-        assertFalse(emailValidator.checkDomain("vardenis.pavardenis@gggmail.com"));
+        assertFalse(emailValidator.validateEmail("vardenis.pavardenis@gggmail.com"));
     }
     @Test
     void emailDomainTest_InvalidTopLevelDomain(){
-        assertFalse(emailValidator.checkDomain("vardenis.pavardenis@gmail.commm"));
+        assertFalse(emailValidator.validateEmail("vardenis.pavardenis@gmail.commm"));
     }
     @Test
     void emailDomainTest_ValidDomain(){
-        assertTrue(emailValidator.checkDomain("vardenis.pavardenis@gmail.com"));
+        assertTrue(emailValidator.validateEmail("vardenis.pavardenis@gmail.com"));
     }
 
     @AfterEach
