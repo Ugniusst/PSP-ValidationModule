@@ -2,6 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/FirstTask/FirstTask.iml" filepath="$PROJECT_DIR$/FirstTask/FirstTask.iml" />
+      <module fileurl="file://$PROJECT_DIR$/SecondTask/SecondTask.iml" filepath="$PROJECT_DIR$/SecondTask/SecondTask.iml" />
       <module fileurl="file://$PROJECT_DIR$/ValidationModule.iml" filepath="$PROJECT_DIR$/ValidationModule.iml" />
     </modules>
   </component>
