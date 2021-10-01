@@ -33,7 +33,7 @@ class EmailValidationTest {
     }
     @Test
     void emailDomainTest_InvalidDomain(){
-        assertFalse(emailValidator.validateEmail("vardenis.pavardenis@gggmail.com"));
+        assertFalse(emailValidator.validateEmail("vardenis.pavardenis@ggg#mail.com"));
     }
     @Test
     void emailDomainTest_InvalidTopLevelDomain(){
