@@ -6,7 +6,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class TestEmailValidator {
 
-    EmailValidator emailValidator = new EmailValidator;
+    EmailValidator emailValidator = new EmailValidator();
 
     @Test
     void testEmailNotNull() {
