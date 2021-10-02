@@ -23,6 +23,7 @@ public class PhoneValidator {
      * Check numbers, length, prefix (if number is local, adds the prefix "+370")
      *
      * @param phoneNumber  - the text of local (lithuanian) phone number
+     * @return true if phone number is correct to all rules, false otherwise
      */
     public boolean validatePhoneNumber(String phoneNumber) {
         if(!checkPhoneNotNull(phoneNumber)) {
@@ -46,6 +47,7 @@ public class PhoneValidator {
      *
      * @param phoneNumber  - the text of phone number with country's prefix
      * @param countryCode - short code of registered country as valid rule
+     * @return true if phone number is correct to all rules, false otherwise
      */
     public boolean validatePhoneNumber(String phoneNumber, String countryCode) {
         if(!checkPhoneNotNull(phoneNumber)) {
