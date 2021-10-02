@@ -8,6 +8,23 @@ public class PasswordChecker {
     public PasswordChecker(String validSpecialSymbols) {
         specialSymbolsSequence = validSpecialSymbols.toCharArray();
     }
+
+    public boolean validatePassword(String password, int minimumLength) {
+        if(!checkPasswordNotNull(password)) {
+            return false;
+        }
+        if(!passwordLengthCheck(password, minimumLength)) {
+            return false;
+        }
+        if(!passwordCheckForUppercaseLetter(password)) {
+            return false;
+        }
+        if(!checkPasswordForSpecialSymbols(password)) {
+            return false;
+        }
+        return true;
+    }
+
     public boolean checkPasswordNotNull(String password) {
         return (password != null);
     }
@@ -50,11 +67,6 @@ public class PasswordChecker {
                 }
             }
         }
-        if(specialSignCounter > 0) {
-            return true;
-        }
-        else {
-            return false;
-        }
+        return (specialSignCounter > 0);
     }
 }

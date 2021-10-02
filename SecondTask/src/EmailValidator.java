@@ -4,7 +4,7 @@ public class EmailValidator {
     private ArrayList<String> validTopLevelDomains = new ArrayList<>();
 
     public EmailValidator(){
-        String[] defaultDomains = new String[]{"lt", "com", "ru", "org"};
+        String[] defaultDomains = new String[]{"lt", "com", "ru", "org", "fr"};
         for(String domain : defaultDomains) {
             validTopLevelDomains.add(domain);
         }
@@ -13,6 +13,22 @@ public class EmailValidator {
         for(String domain : validTopLevelDomains) {
             this.validTopLevelDomains.add(domain);
         }
+    }
+
+    public boolean validateEmail(String email) {
+        if(!checkEmailNotNull(email)) {
+            return false;
+        }
+        if(!checkIfEmailHasEta(email)) {
+            return false;
+        }
+        if(!checkIfEmailDoesntContainInvalidSymbols(email)) {
+            return false;
+        }
+        if(!checkIfEmailDomainValid(email)) {
+            return false;
+        }
+        return true;
     }
 
     public boolean checkEmailNotNull(String email) {
@@ -50,18 +66,23 @@ public class EmailValidator {
                 else if(symbol == previousSymbol) {
                     return false;
                 }
-                previousSymbol = symbol;
             }
+            previousSymbol = symbol;
+
         }
         return true;
     }
 
     public boolean checkIfEmailDomainValid(String email) {
         String domainPart = (email.split("@"))[1];
+        if(domainPart.toCharArray()[0] == '.'){
+            return false;
+        }
         String[] domains = domainPart.split("\\.");
         if(domains.length < 2) {
             return false;
         }
+
         for(String validDomain : validTopLevelDomains) {
             if (domains[domains.length - 1].equals(validDomain)) {
                 return true;

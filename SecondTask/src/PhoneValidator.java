@@ -6,25 +6,51 @@ public class PhoneValidator {
 
     public PhoneValidator(){
         addValidationPhoneRule("LT", "+370", 12);
+        addValidationPhoneRule("LV", "+371", 12);
+        addValidationPhoneRule("EST", "+372", 12);
         addValidationPhoneRule("FR", "+33", 13);
     }
+
+    public boolean validatePhoneNumber(String phoneNumber) {
+        if(!checkPhoneNotNull(phoneNumber)) {
+            return false;
+        }
+        if(!checkPhoneOnlyNumbers(phoneNumber)) {
+            return false;
+        }
+        changeThePrefix(phoneNumber);
+        if(!checkIfStartsWithCountryCode(phoneNumber)) {
+            return false;
+        }
+        if(!checkIfCountryIsValid("LT", phoneNumber)) {
+            return false;
+        }
+        return true;
+    }
+    public boolean validatePhoneNumber(String phoneNumber, String countryCode) {
+        if(!checkPhoneNotNull(phoneNumber)) {
+            return false;
+        }
+        if(!checkPhoneOnlyNumbers(phoneNumber)) {
+            return false;
+        }
+        if(!checkIfStartsWithCountryCode(phoneNumber)) {
+            return false;
+        }
+        if(!checkIfCountryIsValid(countryCode, phoneNumber)) {
+            return false;
+        }
+        return true;
+    }
+
     public String changeThePrefix(String phoneNumber) {
         char[] phoneNumberSequence = phoneNumber.toCharArray();
-        char[] phoneNumberWithPrefix;
-        char[] prefix = new char[]{'+', '3', '7', '0'};
+        String prefix = "+370";
         if(phoneNumberSequence[0] == '8') {
-            phoneNumberWithPrefix = new char[13];
-            for(int i=0; i<prefix.length; i++) {
-                phoneNumberWithPrefix[i] = prefix[i];
-            }
-            for(int i=1; i<phoneNumberSequence.length; i++) {
-                phoneNumberWithPrefix[3+i] = phoneNumberSequence[i];
-            }
+            phoneNumber = phoneNumber.substring(1);
+            phoneNumber = prefix + phoneNumber;
         }
-        else {
-            phoneNumberWithPrefix = phoneNumberSequence;
-        }
-        return String.valueOf(phoneNumberWithPrefix);
+        return phoneNumber;
     }
 
     public boolean checkIfStartsWithCountryCode(String phoneNumber) {
@@ -63,6 +89,9 @@ public class PhoneValidator {
 
     public boolean checkPhoneOnlyNumbers(String phoneNumber) {
         char[] phoneNumberSequence = phoneNumber.toCharArray();
+        if(phoneNumberSequence[0] == '+') {
+            phoneNumberSequence[0] = '0';
+        }
         for(char symbol : phoneNumberSequence) {
             if(symbol < 48 || symbol > 57) {
                 return false;
