@@ -5,10 +5,10 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class PasswordValidationTest {
 
-    PasswordValidator passwordValidator;
+    PasswordChecker passwordValidator;
     @BeforeEach
     void setup(){
-        passwordValidator = new PasswordValidator();
+        passwordValidator = new PasswordChecker();
     }
 
     @Test

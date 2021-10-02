@@ -33,6 +33,6 @@ public class TestPhoneValidator {
     @Test
     void testCountryIsValid () {
         //should return true if the input country is valid, false if not
-        assertTrue(phoneValidator.checkIfCountryIsValid("LT"));
+        assertTrue(phoneValidator.checkIfCountryIsValid("FR", "+331234567891"));
     }
 }
