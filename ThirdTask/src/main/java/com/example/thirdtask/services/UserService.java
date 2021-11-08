@@ -54,7 +54,7 @@ public class UserService {
         user.setId(id);
 
         //if email is already used and not used by updatable user
-        if(userRepository.findByEmail(user.getEmail()) != null || userRepository.findByEmail(user.getEmail()) == user) {
+        if(userRepository.findByEmail(user.getEmail()) != null && userRepository.findByEmail(user.getEmail()) == user) {
             throw new notValidateUserException("Email is already used");
         }
         return userRepository.save(user);
