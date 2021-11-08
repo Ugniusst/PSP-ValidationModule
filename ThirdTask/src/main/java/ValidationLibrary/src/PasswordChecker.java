@@ -1,3 +1,5 @@
+package ValidationLibrary.src;
+
 public class PasswordChecker {
 
     public boolean passwordLenght(String password, int minLength){

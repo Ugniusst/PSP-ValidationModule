@@ -1,3 +1,5 @@
+package ValidationLibrary.src;
+
 public class EmailValidator {
 
     public boolean hasEtaSymbol(String email){
