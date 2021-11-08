@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/FirstTask/FirstTask.iml" filepath="$PROJECT_DIR$/FirstTask/FirstTask.iml" />
       <module fileurl="file://$PROJECT_DIR$/SecondTask/SecondTask.iml" filepath="$PROJECT_DIR$/SecondTask/SecondTask.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ThirdTask/ThirdTask.iml" filepath="$PROJECT_DIR$/ThirdTask/ThirdTask.iml" />
       <module fileurl="file://$PROJECT_DIR$/ValidationModule.iml" filepath="$PROJECT_DIR$/ValidationModule.iml" />
     </modules>
   </component>
