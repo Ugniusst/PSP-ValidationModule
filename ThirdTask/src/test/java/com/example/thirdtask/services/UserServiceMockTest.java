@@ -150,10 +150,10 @@ public class UserServiceMockTest {
     @Test
     void testDelete() {
         try {
-            userService.deleteById(2);
+            userService.deleteById(user.getId());
         } catch (notValidateUserException e) {
-            fail()
+            return;
         }
-        verify(userRepository).delete(Mockito.any(User.class));
+        fail();
     }
 }
