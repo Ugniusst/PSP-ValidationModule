@@ -34,7 +34,7 @@ public class UserService {
         userValidator.validatePassword(user.getPassword());
         userValidator.validatePhoneNumber(user.getTelephoneNumber());
 
-        if(userRepository.findByEmail(user.getEmail()) == null) {
+        if(userRepository.findByEmail(user.getEmail()) != null) {
             throw new notValidateUserException("Email is already used");
         }
 
@@ -45,7 +45,18 @@ public class UserService {
         if(userRepository.findById(id) == null) {
             throw new notValidateUserException("Updatable user is not found, consider creating a new usre");
         }
+
+        UserValidator userValidator = new UserValidator();
+
+        userValidator.validateEmail(user.getEmail());
+        userValidator.validatePassword(user.getPassword());
+        userValidator.validatePhoneNumber(user.getTelephoneNumber());
         user.setId(id);
+
+        //if email is already used and not used by updatable user
+        if(userRepository.findByEmail(user.getEmail()) != null || userRepository.findByEmail(user.getEmail()) == user) {
+            throw new notValidateUserException("Email is already used");
+        }
         return userRepository.save(user);
     }
     public void deleteById(int id) throws notValidateUserException {
