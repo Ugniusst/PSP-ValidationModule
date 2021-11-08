@@ -5,7 +5,7 @@ import ValidationLibrary.src.PasswordChecker;
 import ValidationLibrary.src.PhoneValidator;
 import com.example.thirdtask.customExceptions.notValidateUserException;
 
-public class UserValidator {
+public class UserValidator implements ValidatorUserInterface{
 
     public void validateEmail(String email) throws notValidateUserException {
 

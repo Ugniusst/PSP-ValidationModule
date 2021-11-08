@@ -5,6 +5,7 @@ import com.example.thirdtask.customExceptions.notValidateUserException;
 import com.example.thirdtask.entities.User;
 import com.example.thirdtask.repositories.UserRepository;
 import com.example.thirdtask.validators.UserValidator;
+import com.example.thirdtask.validators.ValidatorUserInterface;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,6 +14,8 @@ public class UserService {
 
     @Autowired
     UserRepository userRepository;
+
+    ValidatorUserInterface userValidator = new UserValidator();
 
     public User findById(int id) {
         return userRepository.findById(id);
@@ -27,8 +30,6 @@ public class UserService {
     }
 
     public User save(User user) throws notValidateUserException {
-
-        UserValidator userValidator = new UserValidator();
 
         userValidator.validateEmail(user.getEmail());
         userValidator.validatePassword(user.getPassword());
@@ -45,8 +46,6 @@ public class UserService {
         if(userRepository.findById(id) == null) {
             throw new notValidateUserException("Updatable user is not found, consider creating a new usre");
         }
-
-        UserValidator userValidator = new UserValidator();
 
         userValidator.validateEmail(user.getEmail());
         userValidator.validatePassword(user.getPassword());
