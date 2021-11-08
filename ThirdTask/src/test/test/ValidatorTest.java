@@ -1,3 +1,6 @@
+import ValidationLibrary.src.EmailValidator;
+import ValidationLibrary.src.PasswordChecker;
+import ValidationLibrary.src.PhoneValidator;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
